@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JDateChooser">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JDateChooser.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
