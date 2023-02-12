@@ -15,7 +15,6 @@ public class EventManager {
         this.tablePanel = tablep;
         this.addTransactionPanel = addp;
 
-
         //PLACEHOLDERS
         //add placeholder to searchbar
         String placeHolder = "What do I need to search?";
@@ -29,8 +28,7 @@ public class EventManager {
         addTransactionPanel.getDescriptionField().setText(descriptionPlaceholder);
         addTransactionPanel.getDescriptionField().addMouseListener(new PlaceHolderListener(addTransactionPanel.getDescriptionField()));
 
-
-        //ADDING AND DELETING TRANSACTIONS
+        //ADD TRANSACTION
         //radio buttons transaction type
         TransactionTypeListener transactionTypeListener = new TransactionTypeListener();
         addTransactionPanel.getTransactionType().getIncome().addActionListener(transactionTypeListener);
@@ -38,10 +36,10 @@ public class EventManager {
         //add transaction button
         AddTransactionListener addTransactionListener = new AddTransactionListener(addTransactionPanel, tablePanel, transactionTypeListener, descriptionPlaceholder, topPanel);
         addTransactionPanel.getAddDeletePanel().getAddButton().addActionListener(addTransactionListener);
-        //delete transaction button
+
+        //DELETE TRANSACTION
         DeleteTransactionListener deleteTransactionListener = new DeleteTransactionListener(tablePanel.getTransactionTableModel(), tablePanel, topPanel);
         addTransactionPanel.getAddDeletePanel().getDeleteButton().addActionListener(deleteTransactionListener);
-
 
         //FILTERS
         //radio buttons date filter
@@ -52,7 +50,10 @@ public class EventManager {
         //interval date filter
         topPanel.getFilter().addActionListener(new IntervalFilterListener(topPanel.getInitalDate(), topPanel.getFinalDate(), tablePanel, topPanel));
 
+        //SHOW TRANSACTION TOTAL
+        topPanel.getShowAmount().addMouseListener(new ShowTotalListener(topPanel));
 
-        top.getShowAmount().addMouseListener(new ShowTotalListener(topPanel));
+        //EDIT TRANSACTION
+        tablePanel.getTransactionTable().addMouseListener(new EditTransactionListener(tablePanel, topPanel));
     }
 }
