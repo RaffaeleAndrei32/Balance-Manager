@@ -19,11 +19,13 @@ public class SearchBarPanel extends JPanel {
     private void setAttributes() {
         this.setLayout(new BorderLayout());
 
-        searchBar.setPreferredSize(new Dimension(50, 40));
+        searchBar.setPreferredSize(new Dimension(searchBar.getWidth(), 40));
         searchBar.setFont(searchBar.getFont().deriveFont(17f));
 
         searchButton.setPreferredSize(new Dimension(100, 25));
         searchButton.setFont(searchBar.getFont().deriveFont(17f));
+
+        this.setPreferredSize(new Dimension(this.getWidth(),40));
     }
 
     public JTextField getSearchBar() {

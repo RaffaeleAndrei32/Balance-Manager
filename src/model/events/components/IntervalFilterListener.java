@@ -1,6 +1,7 @@
 package model.events.components;
 
 import UI.components.TablePanel;
+import UI.components.TopPanel;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
@@ -15,8 +16,9 @@ public class IntervalFilterListener implements ActionListener {
     private JDateChooser initialDate;
     private JDateChooser finalDate;
     private TablePanel tablePanel;
+    private TopPanel topPanel;
 
-    public IntervalFilterListener(JDateChooser from, JDateChooser to, TablePanel tp) {
+    public IntervalFilterListener(JDateChooser from, JDateChooser to, TablePanel tp, TopPanel topPanel) {
         this.initialDate = from;
         this.finalDate = to;
         this.tablePanel = tp;
@@ -50,7 +52,9 @@ public class IntervalFilterListener implements ActionListener {
         LocalDate localFrom =  LocalDate.ofInstant(fromDate.toInstant(), ZoneId.systemDefault());
         LocalDate localTo = LocalDate.ofInstant(toDate.toInstant(), ZoneId.systemDefault());
 
-        tablePanel.getTableSorter().setRowFilter(null);
+        try {
+            tablePanel.getTableSorter().setRowFilter(null);
+
         RowFilter<TableModel, Integer> monthFilter = new RowFilter<TableModel, Integer>() {
             @Override
             public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
@@ -58,9 +62,14 @@ public class IntervalFilterListener implements ActionListener {
                 LocalDate date = (LocalDate) tableModel.getValueAt(
                         entry.getIdentifier(), 1);
 
-                return date.isAfter(localFrom) && date.isBefore(localTo);
+                return (date.isAfter(localFrom) | date.isEqual(localFrom)) && (date.isBefore(localTo) | date.isEqual(localTo));
             }
         };
         tablePanel.getTableSorter().setRowFilter(monthFilter);
+        topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+
+        }
     }
 }

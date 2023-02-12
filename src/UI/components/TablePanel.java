@@ -28,8 +28,6 @@ public class TablePanel extends JPanel {
         tableSorter = new TableRowSorter(transactionTableModel);
         transactionTable.setRowSorter(tableSorter);
 
-        transactionTable.getTableHeader().setEnabled(false);
-
         this.setAttributes();
 
         this.add(searchBarPanel);
@@ -39,6 +37,8 @@ public class TablePanel extends JPanel {
     private void setAttributes() {
         this.setLayout(new BoxLayout(this,  BoxLayout.PAGE_AXIS));
         this.setBorder(new LineBorder(Color.gray, 20, false));
+
+        transactionTable.getTableHeader().setEnabled(false);
     }
 
     public Vector<Vector<Transaction>> getTableData() {
@@ -85,5 +85,18 @@ public class TablePanel extends JPanel {
         return tableSorter;
     }
 
+    public double totalOfTransactions () {
+        double total = 0;
 
+        try {
+            for (int i = 0; i < this.transactionTableModel.getRowCount(); ++i) {
+                int row = tableSorter.convertRowIndexToModel(i);
+                total = total + (double) this.transactionTableModel.getRow(row).getAmount();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+        }
+
+        return total;
+    }
 }

@@ -2,25 +2,26 @@ package model.events.components;
 
 import UI.components.TablePanel;
 import UI.components.TopPanel;
-import model.components.TransactionTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DeleteTransactionListener implements ActionListener {
-    private TransactionTableModel tableModel;
+public class ShowAllFilterListener implements ActionListener {
     private TablePanel tablePanel;
     private TopPanel topPanel;
 
-    public DeleteTransactionListener(TransactionTableModel tableModel, TablePanel tablePanel, TopPanel topPanel) {
-        this.tableModel = tableModel;
+    public ShowAllFilterListener(TablePanel tablePanel, TopPanel topPanel) {
         this.tablePanel = tablePanel;
         this.topPanel = topPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        tableModel.removeRows();
+        try {
+            tablePanel.getTableSorter().setRowFilter(null);
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
+
         topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
     }
 }

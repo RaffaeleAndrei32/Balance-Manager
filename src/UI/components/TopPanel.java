@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.Date;
 
 public class TopPanel extends JPanel {
-    private JLabel showAmount;
+    private JTextField showAmount;
     private JDateChooser initalDate;
     private JDateChooser finalDate;
     private JButton filter;
@@ -21,12 +21,11 @@ public class TopPanel extends JPanel {
         initalDate = new JDateChooser(new Date());
         finalDate = new JDateChooser(new Date());
         filter = new JButton("FILTER");
-        showAmount = new JLabel();
+        showAmount = new JTextField("0.0€");
 
         setAttributes();
-        //showAmount.setEditable(false);
 
-        showAmount.setText("99999");
+        //showAmount.setEditable(false);
         add(showAmount);
         add(intialtDateLabel);
         add(initalDate);
@@ -47,8 +46,10 @@ public class TopPanel extends JPanel {
         finalDate.setPreferredSize(new Dimension(150, 50));
         finalDate.setFont(finalDate.getFont().deriveFont(20f));;
 
-        showAmount.setPreferredSize(new Dimension(300, 100));
-        showAmount.setBorder(new LineBorder(Color.ORANGE, 2));
+        showAmount.setPreferredSize(new Dimension(500, 100));
+        showAmount.setBorder(new LineBorder(Color.black, 1));
+        showAmount.setEditable(false);
+        showAmount.setFont(showAmount.getFont().deriveFont(50f));
 
         showAll.setPreferredSize(new Dimension(100,  50));
         otherFilters.setPreferredSize(new Dimension(100,  50));
@@ -72,7 +73,7 @@ public class TopPanel extends JPanel {
         return otherFilters;
     }
 
-    public JLabel getShowAmount() {
+    public JTextField getShowAmount() {
         return showAmount;
     }
 

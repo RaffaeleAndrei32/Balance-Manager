@@ -16,8 +16,8 @@ public class AddTransactionPanel extends JPanel {
     public AddTransactionPanel() {
         dateChooser = new DatePanel();
         transactionType = new TransactionTypePanel();
-        this.descriptionField = new JTextField("ciao");
-        this.amountField = new JTextField("ciao");
+        this.descriptionField = new JTextField("");
+        this.amountField = new JTextField("");
 
         addDeletePanel = new AddDeletePanel();
 
@@ -39,7 +39,7 @@ public class AddTransactionPanel extends JPanel {
         descriptionField.setFont(descriptionField.getFont().deriveFont(20f));
         descriptionField.setBorder(new LineBorder(Color.darkGray));
 
-        amountField.setDocument(new JTextFieldLimit(20));
+        amountField.setDocument(new JTextFieldLimit(12));
         amountField.setPreferredSize(new Dimension(200, 50));
         amountField.setFont(amountField.getFont().deriveFont(20f));
         amountField.setBorder(new LineBorder(Color.darkGray));

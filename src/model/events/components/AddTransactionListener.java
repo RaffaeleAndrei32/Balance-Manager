@@ -2,6 +2,7 @@ package model.events.components;
 
 import UI.components.AddTransactionPanel;
 import UI.components.TablePanel;
+import UI.components.TopPanel;
 import model.components.Transaction;
 import model.exeptions.MyExeption;
 
@@ -17,19 +18,22 @@ public class AddTransactionListener implements ActionListener {
     private TablePanel tablePanel;
     private TransactionTypeListener transactionTypeListener;
     private String descriptionPlaceHolder;
+    private TopPanel topPanel;
 
-    public AddTransactionListener(AddTransactionPanel addTransactionPanel, TablePanel tablePanel, TransactionTypeListener transactionTypeListener) {
+    public AddTransactionListener(AddTransactionPanel addTransactionPanel, TablePanel tablePanel, TransactionTypeListener transactionTypeListener, TopPanel topPanel) {
         this.addTransactionPanel = addTransactionPanel;
         this.tablePanel = tablePanel;
         this.transactionTypeListener = transactionTypeListener;
         this.descriptionPlaceHolder = "";
+        this.topPanel = topPanel;
     }
 
-    public AddTransactionListener(AddTransactionPanel addTransactionPanel, TablePanel tablePanel, TransactionTypeListener transactionTypeListener, String placeHolder) {
+    public AddTransactionListener(AddTransactionPanel addTransactionPanel, TablePanel tablePanel, TransactionTypeListener transactionTypeListener, String placeHolder, TopPanel topPanel) {
         this.addTransactionPanel = addTransactionPanel;
         this.tablePanel = tablePanel;
         this.transactionTypeListener = transactionTypeListener;
         this.descriptionPlaceHolder = placeHolder;
+        this.topPanel = topPanel;
     }
 
     @Override
@@ -78,6 +82,9 @@ public class AddTransactionListener implements ActionListener {
         if (errorMessage.equals("")) {
             Transaction newTransaction = new Transaction(trasactionDate, transactionAmount, transactionDescription, transactionState);
             tablePanel.getTransactionTableModel().addTransaction(newTransaction);
+
+            //update total
+            topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
         }
         else {
             JOptionPane.showConfirmDialog(null,

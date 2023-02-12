@@ -1,6 +1,7 @@
 package model.events.components;
 
 import UI.components.TablePanel;
+import UI.components.TopPanel;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -15,9 +16,11 @@ import java.util.Locale;
 
 public class OtherFiltersListener implements ActionListener {
     private TablePanel tablePanel;
+    private TopPanel topPanel;
 
-    public OtherFiltersListener(TablePanel panel) {
+    public OtherFiltersListener(TablePanel panel, TopPanel topPanel) {
         this.tablePanel = panel;
+        this.topPanel = topPanel;
     }
 
     @Override
@@ -59,6 +62,8 @@ public class OtherFiltersListener implements ActionListener {
         tmpDate = dateChooser.getDate();
         inputDate =  LocalDate.ofInstant(tmpDate.toInstant(), ZoneId.systemDefault());
 
+
+
         switch (filterTypeListener.getType()) {
 
             case "day" :
@@ -73,7 +78,9 @@ public class OtherFiltersListener implements ActionListener {
                         return inputDate.getDayOfYear() == date.getDayOfYear();
                     }
                 };
+
                 tablePanel.getTableSorter().setRowFilter(dayFilter);
+                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
                 break;
 
             case "week" :
@@ -89,7 +96,9 @@ public class OtherFiltersListener implements ActionListener {
                         return inputDate.get(woy) == date.get(woy);
                     }
                 };
+
                 tablePanel.getTableSorter().setRowFilter(weekFilter);
+                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
                 break;
 
             case "month" :
@@ -104,7 +113,9 @@ public class OtherFiltersListener implements ActionListener {
                         return inputDate.getMonth() == date.getMonth();
                     }
                 };
+
                 tablePanel.getTableSorter().setRowFilter(monthFilter);
+                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
                 break;
 
             case "year" :
@@ -119,7 +130,9 @@ public class OtherFiltersListener implements ActionListener {
                         return inputDate.getYear() == date.getYear();
                     }
                 };
+
                 tablePanel.getTableSorter().setRowFilter(yaerFilter);
+                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
                 break;
         }
     }

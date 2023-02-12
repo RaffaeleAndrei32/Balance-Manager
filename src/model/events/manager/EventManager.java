@@ -15,6 +15,7 @@ public class EventManager {
         this.tablePanel = tablep;
         this.addTransactionPanel = addp;
 
+
         //PLACEHOLDERS
         //add placeholder to searchbar
         String placeHolder = "What do I need to search?";
@@ -28,25 +29,30 @@ public class EventManager {
         addTransactionPanel.getDescriptionField().setText(descriptionPlaceholder);
         addTransactionPanel.getDescriptionField().addMouseListener(new PlaceHolderListener(addTransactionPanel.getDescriptionField()));
 
+
         //ADDING AND DELETING TRANSACTIONS
         //radio buttons transaction type
         TransactionTypeListener transactionTypeListener = new TransactionTypeListener();
         addTransactionPanel.getTransactionType().getIncome().addActionListener(transactionTypeListener);
         addTransactionPanel.getTransactionType().getOutcome().addActionListener(transactionTypeListener);
         //add transaction button
-        AddTransactionListener addTransactionListener = new AddTransactionListener(addTransactionPanel, tablePanel, transactionTypeListener, descriptionPlaceholder);
+        AddTransactionListener addTransactionListener = new AddTransactionListener(addTransactionPanel, tablePanel, transactionTypeListener, descriptionPlaceholder, topPanel);
         addTransactionPanel.getAddDeletePanel().getAddButton().addActionListener(addTransactionListener);
         //delete transaction button
-        DeleteTransactionListener deleteTransactionListener = new DeleteTransactionListener(tablePanel.getTransactionTableModel());
+        DeleteTransactionListener deleteTransactionListener = new DeleteTransactionListener(tablePanel.getTransactionTableModel(), tablePanel, topPanel);
         addTransactionPanel.getAddDeletePanel().getDeleteButton().addActionListener(deleteTransactionListener);
+
 
         //FILTERS
         //radio buttons date filter
-        OtherFiltersListener radioFilterListener = new OtherFiltersListener(tablePanel);
-        topPanel.getOtherFilters().addActionListener(new OtherFiltersListener(tablePanel));
+        OtherFiltersListener radioFilterListener = new OtherFiltersListener(tablePanel, topPanel);
+        topPanel.getOtherFilters().addActionListener(new OtherFiltersListener(tablePanel, topPanel));
         //show all transaction date filter
-        topPanel.getShowAll().addActionListener(new showAllFilterListener(tablePanel));
+        topPanel.getShowAll().addActionListener(new ShowAllFilterListener(tablePanel, topPanel));
         //interval date filter
-        topPanel.getFilter().addActionListener(new IntervalFilterListener(topPanel.getInitalDate(), topPanel.getFinalDate(), tablePanel));
+        topPanel.getFilter().addActionListener(new IntervalFilterListener(topPanel.getInitalDate(), topPanel.getFinalDate(), tablePanel, topPanel));
+
+
+        top.getShowAmount().addMouseListener(new ShowTotalListener(topPanel));
     }
 }
