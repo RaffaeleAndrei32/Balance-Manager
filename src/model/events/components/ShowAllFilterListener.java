@@ -22,6 +22,6 @@ public class ShowAllFilterListener implements ActionListener {
         } catch (ArrayIndexOutOfBoundsException e) {
         }
 
-        topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+        topPanel.updateTotal();
     }
 }

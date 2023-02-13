@@ -38,7 +38,7 @@ public class EventManager {
         addTransactionPanel.getAddDeletePanel().getAddButton().addActionListener(addTransactionListener);
 
         //DELETE TRANSACTION
-        DeleteTransactionListener deleteTransactionListener = new DeleteTransactionListener(tablePanel.getTransactionTableModel(), tablePanel, topPanel);
+        DeleteTransactionListener deleteTransactionListener = new DeleteTransactionListener(tablePanel.getTransactionTableModel(), topPanel);
         addTransactionPanel.getAddDeletePanel().getDeleteButton().addActionListener(deleteTransactionListener);
 
         //FILTERS

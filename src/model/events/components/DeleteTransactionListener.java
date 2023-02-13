@@ -1,6 +1,5 @@
 package model.events.components;
 
-import UI.components.TablePanel;
 import UI.components.TopPanel;
 import model.components.TransactionTableModel;
 
@@ -9,18 +8,16 @@ import java.awt.event.ActionListener;
 
 public class DeleteTransactionListener implements ActionListener {
     private TransactionTableModel tableModel;
-    private TablePanel tablePanel;
     private TopPanel topPanel;
 
-    public DeleteTransactionListener(TransactionTableModel tableModel, TablePanel tablePanel, TopPanel topPanel) {
+    public DeleteTransactionListener(TransactionTableModel tableModel, TopPanel topPanel) {
         this.tableModel = tableModel;
-        this.tablePanel = tablePanel;
         this.topPanel = topPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         tableModel.removeRows();
-        topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+        topPanel.updateTotal();
     }
 }

@@ -84,7 +84,7 @@ public class AddTransactionListener implements ActionListener {
             tablePanel.getTransactionTableModel().addTransaction(newTransaction);
 
             //update total
-            topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+            topPanel.updateTotal();
         }
         else {
             JOptionPane.showConfirmDialog(null,

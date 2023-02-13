@@ -29,10 +29,10 @@ public class GUIManager extends JFrame {
     }
 
     public void addContent() {
-        TopPanel topPanel = new TopPanel();
+        TablePanel tablePanel = new TablePanel();
+        TopPanel topPanel = new TopPanel(tablePanel);
         this.add(topPanel, BorderLayout.PAGE_START);
 
-        TablePanel tablePanel = new TablePanel();
         this.add(tablePanel, BorderLayout.CENTER);
 
         AddTransactionPanel addTransactionPanel = new AddTransactionPanel();

@@ -23,7 +23,7 @@ public class TransactionTableModel extends DefaultTableModel {
     public void addTransaction(Transaction newTransaction) {
         Vector<Object> tmp = new Vector<Object>() {
             {
-                this.add(newTransaction.getAmount());
+                this.add(newTransaction.getAmount() + "€");
                 this.add(newTransaction.getDate());
                 this.add(newTransaction.getDescription());
                 this.add(new Boolean(false));
@@ -34,6 +34,9 @@ public class TransactionTableModel extends DefaultTableModel {
         addRow(tmp);
     }
 
+    public Vector<Transaction> getTransactions () {
+        return this.transactions;
+    }
 
     public Transaction getRow(int row) {
         return this.transactions.get(row);

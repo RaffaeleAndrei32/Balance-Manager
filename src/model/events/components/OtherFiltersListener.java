@@ -80,7 +80,7 @@ public class OtherFiltersListener implements ActionListener {
                 };
 
                 tablePanel.getTableSorter().setRowFilter(dayFilter);
-                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+                topPanel.updateTotal();
                 break;
 
             case "week" :
@@ -98,7 +98,7 @@ public class OtherFiltersListener implements ActionListener {
                 };
 
                 tablePanel.getTableSorter().setRowFilter(weekFilter);
-                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+                topPanel.updateTotal();
                 break;
 
             case "month" :
@@ -115,7 +115,7 @@ public class OtherFiltersListener implements ActionListener {
                 };
 
                 tablePanel.getTableSorter().setRowFilter(monthFilter);
-                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+                topPanel.updateTotal();
                 break;
 
             case "year" :
@@ -132,7 +132,7 @@ public class OtherFiltersListener implements ActionListener {
                 };
 
                 tablePanel.getTableSorter().setRowFilter(yaerFilter);
-                topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+                topPanel.updateTotal();
                 break;
         }
     }

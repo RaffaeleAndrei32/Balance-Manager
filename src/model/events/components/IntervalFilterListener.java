@@ -66,7 +66,7 @@ public class IntervalFilterListener implements ActionListener {
             }
         };
         tablePanel.getTableSorter().setRowFilter(monthFilter);
-        topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+        topPanel.updateTotal();
 
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 

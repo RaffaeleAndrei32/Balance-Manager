@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.Date;
 
 public class TopPanel extends JPanel {
+    private TablePanel tablePanel;
     private JTextField showAmount;
     private JDateChooser initalDate;
     private JDateChooser finalDate;
@@ -17,7 +18,8 @@ public class TopPanel extends JPanel {
     private JButton otherFilters = new JButton("FILTERS");
     private JButton showAll = new JButton("ALL");
 
-    public TopPanel() {
+    public TopPanel(TablePanel tablePanel) {
+        this.tablePanel = tablePanel;
         initalDate = new JDateChooser(new Date());
         finalDate = new JDateChooser(new Date());
         filter = new JButton("FILTER");
@@ -79,5 +81,10 @@ public class TopPanel extends JPanel {
 
     public JButton getShowAll () {
         return showAll;
+    }
+
+    public void updateTotal () {
+        this.showAmount.setText(tablePanel.totalOfTransactions() + "€");
+        //this.showAmount.setForeground(tablePanel.totalOfTransactions() >= 0.0 ? Color.green : Color.red);
     }
 }

@@ -58,8 +58,6 @@ public class EditTransactionListener implements MouseListener {
                     if (id == -1) return;
                 }
 
-                System.out.println(row + " - " + col);
-
                 tablePanel.getTransactionTableModel().setValueAt(editAmount.getText(), row, col);
 
                 break;
@@ -84,11 +82,11 @@ public class EditTransactionListener implements MouseListener {
             case 2:
                 data = new Object[]{"Description: ", editDescription};
 
-                id = JOptionPane.showConfirmDialog(null, data, "Edit amount", -1);
+                id = JOptionPane.showConfirmDialog(null, data, "Edit description", -1);
                 if (id == -1) return;
 
                 while (editDescription.getText().equals("")) {
-                    id = JOptionPane.showConfirmDialog(null, data, "Edit amount", -1);
+                    id = JOptionPane.showConfirmDialog(null, data, "Edit description", -1);
                     if (id == -1) return;
                 }
 
@@ -98,7 +96,7 @@ public class EditTransactionListener implements MouseListener {
             default:
                 return;
         }
-        topPanel.getShowAmount().setText(tablePanel.totalOfTransactions() + "€");
+        topPanel.updateTotal();
     }
 
     @Override
