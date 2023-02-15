@@ -1,9 +1,11 @@
 package UI.components;
 
+import model.components.HasAttributes;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class RadioFilterPanel extends JPanel {
+public class RadioFilterPanel extends JPanel implements HasAttributes {
     private JComboBox dateFilter;
     private ButtonGroup radioFilter = new ButtonGroup();
     private JRadioButton all = new JRadioButton("all");
@@ -26,7 +28,7 @@ public class RadioFilterPanel extends JPanel {
         add(dateFilter);
     }
 
-    private void setAttributes () {
+    public void setAttributes () {
         this.setBackground(Color.gray);
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 

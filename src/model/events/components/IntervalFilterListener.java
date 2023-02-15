@@ -18,10 +18,11 @@ public class IntervalFilterListener implements ActionListener {
     private TablePanel tablePanel;
     private TopPanel topPanel;
 
-    public IntervalFilterListener(JDateChooser from, JDateChooser to, TablePanel tp, TopPanel topPanel) {
+    public IntervalFilterListener(JDateChooser from, JDateChooser to, TablePanel tablePanel, TopPanel topPanel) {
         this.initialDate = from;
         this.finalDate = to;
-        this.tablePanel = tp;
+        this.tablePanel = tablePanel;
+        this.topPanel = topPanel;
     }
 
     @Override
@@ -52,8 +53,12 @@ public class IntervalFilterListener implements ActionListener {
         LocalDate localFrom =  LocalDate.ofInstant(fromDate.toInstant(), ZoneId.systemDefault());
         LocalDate localTo = LocalDate.ofInstant(toDate.toInstant(), ZoneId.systemDefault());
 
-        try {
-            tablePanel.getTableSorter().setRowFilter(null);
+            try {
+                tablePanel.getTableSorter().setRowFilter(null);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                JOptionPane.showMessageDialog(null, "No matching transactions found.");
+                return;
+            }
 
         RowFilter<TableModel, Integer> monthFilter = new RowFilter<TableModel, Integer>() {
             @Override
@@ -67,9 +72,5 @@ public class IntervalFilterListener implements ActionListener {
         };
         tablePanel.getTableSorter().setRowFilter(monthFilter);
         topPanel.updateTotal();
-
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-
-        }
     }
 }

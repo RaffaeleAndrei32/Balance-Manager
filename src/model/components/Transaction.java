@@ -1,12 +1,13 @@
 package model.components;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 /**
  * Representation of transactions
  */
-public class Transaction {
+public class Transaction implements Serializable {
     static private int ID_BASE = 0;
     private int ID;
     private LocalDate date;

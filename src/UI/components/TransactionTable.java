@@ -37,12 +37,19 @@ public class TransactionTable extends JTable {
     public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
         Component component = super.prepareRenderer(renderer, row, column);
         row = this.convertRowIndexToModel(row);
+        Color color;
 
         if (column == 0) {
-            component.setForeground(((Transaction)((TransactionTableModel)this.getModel()).getTransactions().get(row)).getAmount() > 0 ? Color.green : Color.RED);
-        } else {
+            TransactionTableModel tableModel = (TransactionTableModel) this.getModel();
+            if (tableModel.getTransactions().get(row).getAmount() >= 0)
+                color = Color.green;
+            else
+                color = Color.red;
+
+            component.setForeground(color);
+        } else
             component.setForeground(Color.black);
-        }
+
         return component;
     }
 }

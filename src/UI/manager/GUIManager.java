@@ -1,8 +1,10 @@
 package UI.manager;
 
 import UI.components.AddTransactionPanel;
+import UI.components.MenuBarPanel;
 import UI.components.TablePanel;
 import UI.components.TopPanel;
+import model.components.HasAttributes;
 import model.events.manager.EventManager;
 
 import javax.swing.*;
@@ -11,16 +13,16 @@ import java.awt.*;
 /**
  * Main class that manages UI components and events
  */
-public class GUIManager extends JFrame {
+public class GUIManager extends JFrame implements HasAttributes {
 
     public GUIManager() {
         super("Balance Manager");
-        setFrameAttributes();
+        setAttributes();
         addContent();
         this.setVisible(true);
     }
 
-    public void setFrameAttributes() {
+    public void setAttributes() {
         this.setLayout(new BorderLayout());
         this.setSize(1400, 750);
         this.setResizable(false);
@@ -29,6 +31,9 @@ public class GUIManager extends JFrame {
     }
 
     public void addContent() {
+        MenuBarPanel menuBarPanel = new MenuBarPanel();
+        this.setJMenuBar(menuBarPanel.getMenuBar());
+
         TablePanel tablePanel = new TablePanel();
         TopPanel topPanel = new TopPanel(tablePanel);
         this.add(topPanel, BorderLayout.PAGE_START);
@@ -38,6 +43,6 @@ public class GUIManager extends JFrame {
         AddTransactionPanel addTransactionPanel = new AddTransactionPanel();
         this.add(addTransactionPanel, BorderLayout.PAGE_END);
 
-        EventManager eventManager = new EventManager(topPanel, tablePanel, addTransactionPanel);
+        EventManager eventManager = new EventManager(topPanel, tablePanel, addTransactionPanel, menuBarPanel);
     }
 }

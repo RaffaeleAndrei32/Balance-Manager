@@ -1,9 +1,11 @@
 package UI.components;
 
+import model.components.HasAttributes;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class AddDeletePanel extends JPanel {
+public class AddDeletePanel extends JPanel implements HasAttributes {
     private JButton addButton;
     private JButton deleteButton;
 

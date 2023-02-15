@@ -1,5 +1,6 @@
 package UI.components;
 
+import model.components.HasAttributes;
 import model.components.Transaction;
 import model.components.TransactionTableModel;
 
@@ -9,7 +10,7 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.util.Vector;
 
-public class TablePanel extends JPanel {
+public class TablePanel extends JPanel implements HasAttributes {
     private Vector<Vector<Transaction>> tableData;
     private TransactionTableModel transactionTableModel;
     private TransactionTable transactionTable;
@@ -34,7 +35,7 @@ public class TablePanel extends JPanel {
         this.add(transactionTableScrollable);
     }
 
-    private void setAttributes() {
+    public void setAttributes() {
         this.setLayout(new BoxLayout(this,  BoxLayout.PAGE_AXIS));
         this.setBorder(new LineBorder(Color.gray, 20, false));
 

@@ -1,9 +1,11 @@
 package UI.components;
 
+import model.components.HasAttributes;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class SearchBarPanel extends JPanel {
+public class SearchBarPanel extends JPanel implements HasAttributes {
     private JTextField searchBar;
     private JButton searchButton;
 
@@ -16,7 +18,7 @@ public class SearchBarPanel extends JPanel {
         this.add(searchBar, BorderLayout.CENTER);
     }
 
-    private void setAttributes() {
+    public void setAttributes() {
         this.setLayout(new BorderLayout());
 
         searchBar.setPreferredSize(new Dimension(searchBar.getWidth(), 40));

@@ -1,13 +1,14 @@
 package UI.components;
 
 import com.toedter.calendar.JDateChooser;
+import model.components.HasAttributes;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Date;
 
-public class TopPanel extends JPanel {
+public class TopPanel extends JPanel implements HasAttributes {
     private TablePanel tablePanel;
     private JTextField showAmount;
     private JDateChooser initalDate;
@@ -38,7 +39,7 @@ public class TopPanel extends JPanel {
         add(showAll);
     }
 
-    private void setAttributes() {
+    public void setAttributes() {
         setLayout(new FlowLayout(FlowLayout.LEFT, 25, 20));
         this.setBackground(Color.gray);
         this.setPreferredSize(new Dimension(this.getWidth(), 200));

@@ -1,12 +1,13 @@
 package UI.components;
 
+import model.components.HasAttributes;
 import model.components.JTextFieldLimit;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class AddTransactionPanel extends JPanel {
+public class AddTransactionPanel extends JPanel implements HasAttributes {
     private DatePanel dateChooser;
     private TransactionTypePanel transactionType;
     private JTextField descriptionField;
@@ -30,7 +31,7 @@ public class AddTransactionPanel extends JPanel {
         add(addDeletePanel);
     }
 
-    private void setAttributes() {
+     public void setAttributes() {
         this.setBackground(Color.gray);
         setLayout(new FlowLayout(FlowLayout.LEFT, 25, 20));
 

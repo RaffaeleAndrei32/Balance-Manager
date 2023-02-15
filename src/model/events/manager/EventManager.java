@@ -1,19 +1,24 @@
 package model.events.manager;
 
 import UI.components.AddTransactionPanel;
+import UI.components.MenuBarPanel;
 import UI.components.TablePanel;
 import UI.components.TopPanel;
 import model.events.components.*;
+
+import javax.swing.*;
 
 public class EventManager {
     private TopPanel topPanel;
     private TablePanel tablePanel;
     private AddTransactionPanel addTransactionPanel;
+    private MenuBarPanel menuBarPanel;
 
-    public EventManager(TopPanel top, TablePanel tablep, AddTransactionPanel addp) {
+    public EventManager(TopPanel top, TablePanel tablep, AddTransactionPanel addp, MenuBarPanel menuBarPanel) {
         this.topPanel = top;
         this.tablePanel = tablep;
         this.addTransactionPanel = addp;
+        this.menuBarPanel = menuBarPanel;
 
         //PLACEHOLDERS
         //add placeholder to searchbar
@@ -55,5 +60,16 @@ public class EventManager {
 
         //EDIT TRANSACTION
         tablePanel.getTransactionTable().addMouseListener(new EditTransactionListener(tablePanel, topPanel));
+
+        //MENUBAR
+        //save option
+        menuBarPanel.getMenuBar().getMenu(0).getItem(0).addActionListener(new SaveListener(tablePanel));
+        //load option
+        menuBarPanel.getMenuBar().getMenu(0).getItem(1).addActionListener(new LoadListener(tablePanel));
+        //export as
+        JMenu exportMenu = (JMenu)menuBarPanel.getMenuBar().getMenu(0).getItem(2);
+        exportMenu.getItem(0).addActionListener(new ExporterListener(tablePanel));
+        exportMenu.getItem(1).addActionListener(new ExporterListener(tablePanel));
+        exportMenu.getItem(2).addActionListener(new ExporterListener(tablePanel));
     }
 }

@@ -63,77 +63,81 @@ public class OtherFiltersListener implements ActionListener {
         inputDate =  LocalDate.ofInstant(tmpDate.toInstant(), ZoneId.systemDefault());
 
 
+        try {
+            switch (filterTypeListener.getType()) {
 
-        switch (filterTypeListener.getType()) {
+                case "day":
+                    tablePanel.getTableSorter().setRowFilter(null);
+                    RowFilter<TableModel, Integer> dayFilter = new RowFilter<TableModel, Integer>() {
+                        @Override
+                        public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
+                            TableModel tableModel = entry.getModel();
+                            LocalDate date = (LocalDate) tableModel.getValueAt(
+                                    entry.getIdentifier(), 1);
 
-            case "day" :
-                tablePanel.getTableSorter().setRowFilter(null);
-                RowFilter<TableModel, Integer> dayFilter = new RowFilter<TableModel, Integer>() {
-                    @Override
-                    public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
-                        TableModel tableModel = entry.getModel();
-                        LocalDate date = (LocalDate) tableModel.getValueAt(
-                                entry.getIdentifier(), 1);
+                            return inputDate.getDayOfYear() == date.getDayOfYear();
+                        }
+                    };
 
-                        return inputDate.getDayOfYear() == date.getDayOfYear();
-                    }
-                };
+                    tablePanel.getTableSorter().setRowFilter(dayFilter);
+                    topPanel.updateTotal();
+                    break;
 
-                tablePanel.getTableSorter().setRowFilter(dayFilter);
-                topPanel.updateTotal();
-                break;
+                case "week":
+                    tablePanel.getTableSorter().setRowFilter(null);
+                    RowFilter<TableModel, Integer> weekFilter = new RowFilter<TableModel, Integer>() {
+                        @Override
+                        public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
+                            TableModel tableModel = entry.getModel();
+                            LocalDate date = (LocalDate) tableModel.getValueAt(
+                                    entry.getIdentifier(), 1);
+                            TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
 
-            case "week" :
-                tablePanel.getTableSorter().setRowFilter(null);
-                RowFilter<TableModel, Integer> weekFilter = new RowFilter<TableModel, Integer>() {
-                    @Override
-                    public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
-                        TableModel tableModel = entry.getModel();
-                        LocalDate date = (LocalDate) tableModel.getValueAt(
-                                entry.getIdentifier(), 1);
-                        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+                            return inputDate.get(woy) == date.get(woy);
+                        }
+                    };
 
-                        return inputDate.get(woy) == date.get(woy);
-                    }
-                };
+                    tablePanel.getTableSorter().setRowFilter(weekFilter);
+                    topPanel.updateTotal();
+                    break;
 
-                tablePanel.getTableSorter().setRowFilter(weekFilter);
-                topPanel.updateTotal();
-                break;
+                case "month":
+                    tablePanel.getTableSorter().setRowFilter(null);
+                    RowFilter<TableModel, Integer> monthFilter = new RowFilter<TableModel, Integer>() {
+                        @Override
+                        public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
+                            TableModel tableModel = entry.getModel();
+                            LocalDate date = (LocalDate) tableModel.getValueAt(
+                                    entry.getIdentifier(), 1);
 
-            case "month" :
-                tablePanel.getTableSorter().setRowFilter(null);
-                RowFilter<TableModel, Integer> monthFilter = new RowFilter<TableModel, Integer>() {
-                    @Override
-                    public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
-                        TableModel tableModel = entry.getModel();
-                        LocalDate date = (LocalDate) tableModel.getValueAt(
-                                entry.getIdentifier(), 1);
+                            return inputDate.getMonth() == date.getMonth();
+                        }
+                    };
 
-                        return inputDate.getMonth() == date.getMonth();
-                    }
-                };
+                    tablePanel.getTableSorter().setRowFilter(monthFilter);
+                    topPanel.updateTotal();
+                    break;
 
-                tablePanel.getTableSorter().setRowFilter(monthFilter);
-                topPanel.updateTotal();
-                break;
+                case "year":
+                    tablePanel.getTableSorter().setRowFilter(null);
+                    RowFilter<TableModel, Integer> yaerFilter = new RowFilter<TableModel, Integer>() {
+                        @Override
+                        public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
+                            TableModel tableModel = entry.getModel();
+                            LocalDate date = (LocalDate) tableModel.getValueAt(
+                                    entry.getIdentifier(), 1);
 
-            case "year" :
-                tablePanel.getTableSorter().setRowFilter(null);
-                RowFilter<TableModel, Integer> yaerFilter = new RowFilter<TableModel, Integer>() {
-                    @Override
-                    public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
-                        TableModel tableModel = entry.getModel();
-                        LocalDate date = (LocalDate) tableModel.getValueAt(
-                                entry.getIdentifier(), 1);
+                            return inputDate.getYear() == date.getYear();
+                        }
+                    };
 
-                        return inputDate.getYear() == date.getYear();
-                    }
-                };
+                    tablePanel.getTableSorter().setRowFilter(yaerFilter);
+                    topPanel.updateTotal();
+                    break;
+            }
 
-                tablePanel.getTableSorter().setRowFilter(yaerFilter);
-                topPanel.updateTotal();
-                break;
+        }catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "No matching transactions found.");
         }
     }
 }

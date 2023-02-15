@@ -1,9 +1,11 @@
 package UI.components;
 
+import model.components.HasAttributes;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TransactionTypePanel extends JPanel {
+public class TransactionTypePanel extends JPanel implements HasAttributes {
     private JRadioButton income;
     private JRadioButton outcome;
     private ButtonGroup transactionTypes;
@@ -22,7 +24,7 @@ public class TransactionTypePanel extends JPanel {
         add(outcome);
     }
 
-    private void setAttributes () {
+    public void setAttributes () {
         this.setBackground(Color.gray);
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         income.setSelected(true);
