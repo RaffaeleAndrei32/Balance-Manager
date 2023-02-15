@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BalanceManager:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="BalanceManager.jar">
+      <element id="module-output" name="BalanceManager" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/JDateChooser.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
