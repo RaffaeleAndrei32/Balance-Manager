@@ -13,31 +13,25 @@ public class CSVExporter extends Exporter {
 
     @Override
     public void export() throws IOException {
-        FileInputStream sourceFile = new FileInputStream(super.sourceFile.getPath());
-        ObjectInputStream inputStream = new ObjectInputStream(sourceFile);
+        FileInputStream fin = new FileInputStream(super.sourceFile.getPath());
+        ObjectInputStream inputStream = new ObjectInputStream(fin);
 
-        FileOutputStream fout = new FileOutputStream(destinationFile);
-        DataOutputStream outputStream = new DataOutputStream(fout);
+        PrintWriter printWriter = new PrintWriter(new FileWriter(super.destinationFile));
 
         Transaction transaction;
-        int comma = 44;
-        int endLine = 10;
 
         try {
             while((transaction = (Transaction) inputStream.readObject()) != null) {
-                outputStream.writeBytes(String.valueOf(transaction.getAmount()));
-                outputStream.write(comma);
-                outputStream.writeBytes(transaction.getDate().toString());
-                outputStream.write(comma);
-                outputStream.writeBytes(transaction.getDescription());
-                outputStream.write(endLine);
+                printWriter.print(transaction.getAmount());
+                printWriter.print(",");
+                printWriter.print(transaction.getDate());
+                printWriter.print(",");
+                printWriter.println(transaction.getDescription());
             }
-        } catch (EOFException e) {
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | EOFException e) {
         }
 
         inputStream.close();
-        outputStream.close();
-
+        printWriter.close();
     }
 }

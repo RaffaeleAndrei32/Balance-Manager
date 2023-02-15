@@ -84,9 +84,9 @@ public class Transaction implements Serializable {
 
     @Override
     public String toString() {
-        return this.description + "\n" +
-                String.valueOf(this.amount) + "\n" +
-                this.date.toString() + "\n";
+        return this.description + " " +
+                String.valueOf(this.amount) + " " +
+                this.date.toString();
 
     }
 }

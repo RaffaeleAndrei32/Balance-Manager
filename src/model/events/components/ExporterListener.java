@@ -44,7 +44,10 @@ public class ExporterListener implements ActionListener {
                 }
                 break;
 
-            case "text" :
+
+            case "txt" :
+
+                System.out.println("ciao");
                 if (!saveFile.getName().endsWith(".txt")) {
                     JOptionPane.showMessageDialog(null, "The selected file is not a TXT file, please choose another one.", "File type error", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -53,10 +56,11 @@ public class ExporterListener implements ActionListener {
                 TXTExporter txtExporter = new TXTExporter(tablePanel, tablePanel.getTransactionTableModel().getTargetFile(), saveFile);
                 try {
                     txtExporter.export();
-                } catch (IOException e) {
+                } catch (IOException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
                 break;
+
 
             case "excel" :
                 if (!saveFile.getName().endsWith(".xlsx")) {

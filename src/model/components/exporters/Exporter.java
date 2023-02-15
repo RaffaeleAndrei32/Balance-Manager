@@ -16,5 +16,5 @@ public abstract class Exporter {
         this.destinationFile = destinationFile;
     }
 
-    protected abstract void export() throws IOException;
+    protected abstract void export() throws IOException, ClassNotFoundException;
 }
