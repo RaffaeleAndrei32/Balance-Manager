@@ -63,8 +63,8 @@ public class ExporterListener implements ActionListener {
 
 
             case "excel" :
-                if (!saveFile.getName().endsWith(".xlsx")) {
-                    JOptionPane.showMessageDialog(null, "The selected file is not a XLSX file, please choose another one.", "File type error", JOptionPane.ERROR_MESSAGE);
+                if (!saveFile.getName().endsWith(".ods")) {
+                    JOptionPane.showMessageDialog(null, "The selected file is not a ODS file, please choose another one.", "File type error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
