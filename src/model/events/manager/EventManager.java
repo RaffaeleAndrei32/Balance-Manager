@@ -7,6 +7,8 @@ import UI.components.TopPanel;
 import model.events.components.*;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EventManager {
     private TopPanel topPanel;
@@ -71,5 +73,22 @@ public class EventManager {
         exportMenu.getItem(0).addActionListener(new ExporterListener(tablePanel));
         exportMenu.getItem(1).addActionListener(new ExporterListener(tablePanel));
         exportMenu.getItem(2).addActionListener(new ExporterListener(tablePanel));
+        //print
+        menuBarPanel.getMenuBar().getMenu(0).getItem(3).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    if (! tablePanel.getTransactionTable().print()) {
+                        System.err.println("User cancelled printing");
+                    }
+                } catch (java.awt.print.PrinterException e) {
+                    System.err.format("Cannot print %s%n", e.getMessage());
+                }
+
+            }
+        });
+
+        //SEARCHBAR
+        tablePanel.getSearchBarPanel().getSearchButton().addActionListener(new RowHighLighterListener(tablePanel));
     }
 }

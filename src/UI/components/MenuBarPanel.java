@@ -11,12 +11,14 @@ public class MenuBarPanel extends JPanel {
     private JMenuItem csv;
     private JMenuItem text;
     private JMenuItem excel;
+    private JMenuItem print;
 
     public MenuBarPanel () {
         menuBar = new JMenuBar();
-        menu = new JMenu("File");
+        menu = new JMenu("Options");
         save = new JMenuItem("Save to");
         load = new JMenuItem("Load from");
+        print = new JMenuItem("Print");
 
         exportAs = new JMenu("Export as");
         csv = new JMenuItem("csv");
@@ -26,6 +28,7 @@ public class MenuBarPanel extends JPanel {
         menu.add(save);
         menu.add(load);
         menu.add(exportAs);
+        menu.add(print);
 
         exportAs.add(csv);
         exportAs.add(excel);

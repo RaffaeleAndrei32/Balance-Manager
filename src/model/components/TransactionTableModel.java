@@ -7,9 +7,9 @@ import java.util.Vector;
 
 public class TransactionTableModel extends DefaultTableModel implements Runnable{
     private Vector<Transaction> transactions = new Vector<Transaction>();
-    private Vector<Vector<Transaction>> tableData;
     private File targetFile = new File("save.tmp");
     private final static Vector<String> colsNames = new Vector<String>();
+    private int rowToHighlight;
 
     public TransactionTableModel(Vector<Vector<Transaction>> tableData) {
         super(tableData, colsNames);
@@ -18,6 +18,8 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         colsNames.add("Date");
         colsNames.add("Description");
         colsNames.add("Delete");
+
+        this.rowToHighlight = -1;
 
         initThread();
     }
@@ -50,10 +52,6 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
 
     public Vector<Transaction> getTransactions () {
         return this.transactions;
-    }
-
-    public Vector<Vector<Transaction>> getTableData() {
-        return tableData;
     }
 
     public File getTargetFile() {
@@ -104,9 +102,20 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
             if ((Boolean)(this.dataVector.get(i)).get(3)) {
                 this.removeRow(i);
                 this.transactions.remove(i);
+
+                if (i == this.rowToHighlight)
+                    this.rowToHighlight = -1;
                 --i;
             }
         }
+    }
+
+    public void setRowToHighlight (int row) {
+        this.rowToHighlight = row;
+    }
+
+    public int getRowToHighlight () {
+        return this.rowToHighlight;
     }
 
     public void save(File saveFile) throws IOException {

@@ -1,19 +1,17 @@
 package UI.components;
 
-import model.components.Transaction;
 import model.components.TransactionTableModel;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
 import java.awt.*;
-import java.util.Vector;
 
 public class TransactionTable extends JTable {
+    private TransactionTableModel transactionTableModel;
 
     public TransactionTable(TransactionTableModel transactionTableModel) {
-        Vector<Vector<Transaction>> tableData = new Vector();
+        this.transactionTableModel = transactionTableModel;
         this.setModel(transactionTableModel);
 
         this.setRowHeight(40);
@@ -23,8 +21,8 @@ public class TransactionTable extends JTable {
     }
 
     @Override
-    public TableModel getModel() {
-        return super.getModel();
+    public TransactionTableModel getModel() {
+        return this.transactionTableModel;
     }
 
     @Override
@@ -37,8 +35,13 @@ public class TransactionTable extends JTable {
     public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
         Component component = super.prepareRenderer(renderer, row, column);
         row = this.convertRowIndexToModel(row);
-        Color color;
 
+        if (row == this.getModel().getRowToHighlight())
+            component.setBackground(Color.yellow);
+        else
+            component.setBackground(Color.white);
+
+        Color color;
         if (column == 0) {
             TransactionTableModel tableModel = (TransactionTableModel) this.getModel();
             if (tableModel.getTransactions().get(row).getAmount() >= 0)

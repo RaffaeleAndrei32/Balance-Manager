@@ -24,7 +24,7 @@ public class TopPanel extends JPanel implements HasAttributes {
         initalDate = new JDateChooser(new Date());
         finalDate = new JDateChooser(new Date());
         filter = new JButton("FILTER");
-        showAmount = new JTextField("0.0€");
+        showAmount = new JTextField(tablePanel.totalOfTransactions() + "€");
 
         setAttributes();
 
