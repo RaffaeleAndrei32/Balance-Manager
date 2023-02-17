@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Raffaele Andrei
+ * Calls transactionTableModel.save()
+ */
 public class SaveListener implements ActionListener {
     private TablePanel tablePanel;
 

@@ -5,6 +5,10 @@ import model.components.Transaction;
 
 import java.io.*;
 
+/**
+ * @author Raffaele Andrei
+ * Export to TXT
+ */
 public class TXTExporter extends Exporter {
     public TXTExporter(TablePanel tablePanel, File sourceFile, File destinationFile) {
         super(tablePanel, sourceFile, destinationFile);

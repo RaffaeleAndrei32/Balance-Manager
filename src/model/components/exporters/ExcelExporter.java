@@ -7,6 +7,10 @@ import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Raffaele Andrei
+ * Export to ODS
+ */
 public class ExcelExporter extends Exporter{
     public ExcelExporter(TablePanel tablePanel, File sourceFile, File destinationFile) {
         super(tablePanel, sourceFile, destinationFile);

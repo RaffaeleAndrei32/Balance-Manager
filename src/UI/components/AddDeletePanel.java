@@ -5,6 +5,10 @@ import model.components.HasAttributes;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Raffaele Andrei
+ * Panel form ADD and DELETE button
+ */
 public class AddDeletePanel extends JPanel implements HasAttributes {
     private JButton addButton;
     private JButton deleteButton;

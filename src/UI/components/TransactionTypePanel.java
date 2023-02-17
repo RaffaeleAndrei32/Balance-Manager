@@ -5,6 +5,10 @@ import model.components.HasAttributes;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Raffaele Andrei
+ * Selects transaction type
+ */
 public class TransactionTypePanel extends JPanel implements HasAttributes {
     private JRadioButton income;
     private JRadioButton outcome;

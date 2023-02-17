@@ -10,6 +10,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Raffaele Andrei
+ * Manager of the events, assigns event to components
+ */
 public class EventManager {
     private TopPanel topPanel;
     private TablePanel tablePanel;

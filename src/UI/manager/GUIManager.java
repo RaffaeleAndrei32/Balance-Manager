@@ -11,7 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Main class that manages UI components and events
+ * @author Raffaele Andrei
+ * Builds the view and UI components
  */
 public class GUIManager extends JFrame implements HasAttributes {
 

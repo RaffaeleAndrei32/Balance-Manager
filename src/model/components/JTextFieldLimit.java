@@ -4,10 +4,13 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import javax.swing.text.AttributeSet;
 
+/**
+ * @author Raffaele Andrei
+ * Limit for JTextField text
+ */
 public class JTextFieldLimit extends PlainDocument {
 
     private int limit;
-
     public JTextFieldLimit(int limit) {
         super();
         this.limit = limit;

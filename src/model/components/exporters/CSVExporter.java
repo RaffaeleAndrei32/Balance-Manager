@@ -5,6 +5,10 @@ import model.components.Transaction;
 
 import java.io.*;
 
+/**
+ * @author Raffaele Andrei
+ * Export to CSV
+ */
 public class CSVExporter extends Exporter {
 
     public CSVExporter(TablePanel tablePanel, File sourceFile, File destinationFile) {

@@ -6,6 +6,10 @@ import UI.components.TopPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Raffaele Andrei
+ * Shows all transactions
+ */
 public class ShowAllFilterListener implements ActionListener {
     private TablePanel tablePanel;
     private TopPanel topPanel;

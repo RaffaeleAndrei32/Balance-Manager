@@ -6,6 +6,10 @@ import model.components.TransactionTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Raffaele Andrei
+ * Removes the rows that are marked as to delete
+ */
 public class DeleteTransactionListener implements ActionListener {
     private TransactionTableModel tableModel;
     private TopPanel topPanel;

@@ -5,6 +5,10 @@ import UI.components.TablePanel;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Raffaele Andrei
+ * Abstraction of Exporter class
+ */
 public abstract class Exporter {
     protected TablePanel tablePanel;
     protected File destinationFile;

@@ -12,6 +12,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+/**
+ * @author Raffaele Andrei
+ * Applies the filter between the initial date and the final date
+ */
 public class IntervalFilterListener implements ActionListener {
     private JDateChooser initialDate;
     private JDateChooser finalDate;

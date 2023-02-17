@@ -3,6 +3,10 @@ package model.events.components;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Raffaele Andrei
+ * Used in OtherFiltersListener
+ */
 public class FilterTypeListener implements ActionListener {
     private String type;
 

@@ -8,6 +8,10 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Date;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for TablePanel, showAmount and filters
+ */
 public class TopPanel extends JPanel implements HasAttributes {
     private TablePanel tablePanel;
     private JTextField showAmount;

@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * @author Raffaele Andrei
+ * Shows total on click
+ */
 public class ShowTotalListener implements MouseListener {
     private TopPanel topPanel;
 

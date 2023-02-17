@@ -12,6 +12,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+/**
+ * @author Raffaele Andrei
+ * Manages the process of editing the transaction
+ */
 public class EditTransactionListener implements MouseListener {
     private TablePanel tablePanel;
     private TopPanel topPanel;

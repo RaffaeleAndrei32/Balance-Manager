@@ -11,6 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Raffaele Andrei
+ * Manages the export to file process
+ */
 public class ExporterListener implements ActionListener {
     private TablePanel tablePanel;
 

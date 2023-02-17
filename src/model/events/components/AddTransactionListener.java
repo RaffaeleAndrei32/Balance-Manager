@@ -4,7 +4,7 @@ import UI.components.AddTransactionPanel;
 import UI.components.TablePanel;
 import UI.components.TopPanel;
 import model.components.Transaction;
-import model.exeptions.MyExeption;
+import model.exceptions.MyException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +13,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+/**
+ * @author Raffaele Andrei
+ * Receives the selected transaction data and if they are correct add the transaction to the table
+ */
 public class AddTransactionListener implements ActionListener {
     private AddTransactionPanel addTransactionPanel;
     private TablePanel tablePanel;
@@ -50,9 +54,9 @@ public class AddTransactionListener implements ActionListener {
         double transactionAmount = 0;
         try {
             if (addTransactionPanel.getAmountField().getText().equals("") || Double.parseDouble(addTransactionPanel.getAmountField().getText()) < 0.0)
-                throw new MyExeption("Enter a valid amount!");
+                throw new MyException("Enter a valid amount!");
             transactionAmount = Double.parseDouble(addTransactionPanel.getAmountField().getText());
-        } catch(MyExeption | NumberFormatException e) {
+        } catch(MyException | NumberFormatException e) {
             errorMessage += e.getMessage() + "\n";
             errorCount++;
         }
@@ -61,10 +65,10 @@ public class AddTransactionListener implements ActionListener {
         Date tmpDate = new Date();
         try {
             if (addTransactionPanel.getDateChooser().getDateChooser().getDate() == null)
-                throw new MyExeption("Choose a valid date!");
+                throw new MyException("Choose a valid date!");
             tmpDate = addTransactionPanel.getDateChooser().getDateChooser().getDate();
             trasactionDate =  LocalDate.ofInstant(tmpDate.toInstant(), ZoneId.systemDefault());
-        } catch(MyExeption e) {
+        } catch(MyException e) {
             errorMessage += e.getMessage() + "\n";
             errorCount++;
         }
@@ -72,9 +76,9 @@ public class AddTransactionListener implements ActionListener {
         String transactionDescription = "";
         try {
             if (addTransactionPanel.getDescriptionField().getText().equals("") || addTransactionPanel.getDescriptionField().getText().equals(descriptionPlaceHolder))
-                throw new MyExeption("Enter a valid description!");
+                throw new MyException("Enter a valid description!");
             transactionDescription = addTransactionPanel.getDescriptionField().getText();
-        } catch (MyExeption e) {
+        } catch (MyException e) {
             errorMessage += e.getMessage();
             errorCount++;
         }

@@ -7,6 +7,10 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
+/**
+ * @author Raffaele Andrei
+ * Table of transactions
+ */
 public class TransactionTable extends JTable {
     private TransactionTableModel transactionTableModel;
 
@@ -31,6 +35,13 @@ public class TransactionTable extends JTable {
                 convertColumnIndexToModel(column));
     }
 
+    /**
+     * Colors the cell green or red depending of the amount and yellow is the row is highlighted
+     * @param renderer
+     * @param row
+     * @param column
+     * @return
+     */
     @Override
     public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
         Component component = super.prepareRenderer(renderer, row, column);

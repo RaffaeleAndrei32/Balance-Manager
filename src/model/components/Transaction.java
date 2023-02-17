@@ -5,7 +5,8 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 /**
- * Representation of transactions
+ * @author Raffaele Andrei
+ * Representation of transaction
  */
 public class Transaction implements Serializable {
     static private int ID_BASE = 0;

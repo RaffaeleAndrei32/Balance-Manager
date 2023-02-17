@@ -3,6 +3,7 @@ package model.events.components;
 import UI.components.TablePanel;
 import UI.components.TopPanel;
 import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,10 @@ import java.time.temporal.WeekFields;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * @author Raffaele Andrei
+ * Applies the filter by year, month, week, day
+ */
 public class OtherFiltersListener implements ActionListener {
     private TablePanel tablePanel;
     private TopPanel topPanel;

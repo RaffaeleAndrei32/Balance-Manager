@@ -3,6 +3,10 @@ package model.events.components;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Raffaele Andrei
+ * Returns the selected transaction type
+ */
 public class TransactionTypeListener implements ActionListener {
     private String transactionType;
 

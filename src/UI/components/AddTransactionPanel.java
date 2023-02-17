@@ -7,6 +7,10 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for the transaction data inputs
+ */
 public class AddTransactionPanel extends JPanel implements HasAttributes {
     private DatePanel dateChooser;
     private TransactionTypePanel transactionType;

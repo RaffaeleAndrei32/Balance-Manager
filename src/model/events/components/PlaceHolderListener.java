@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * @author Raffaele Andrei
+ * Adds placeholder to JTextField
+ */
 public class PlaceHolderListener implements MouseListener {
     private JTextField target;
     private String placeHolder;

@@ -5,6 +5,10 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.Vector;
 
+/**
+ * @author Raffaele Andrei
+ * Model of table
+ */
 public class TransactionTableModel extends DefaultTableModel implements Runnable{
     private Vector<Transaction> transactions = new Vector<Transaction>();
     private File targetFile = new File("save.tmp");
@@ -24,6 +28,9 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         initThread();
     }
 
+    /**
+     * Initialize thread for automatic save
+     */
     private void initThread() {
         try {
             this.load(this.targetFile);
@@ -36,6 +43,10 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         t.start();
     }
 
+    /**
+     * Add transaction to table
+     * @param newTransaction
+     */
     public void addTransaction(Transaction newTransaction) {
         Vector<Object> tmp = new Vector<Object>() {
             {
@@ -73,6 +84,12 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         return getValueAt(0, c).getClass();
     }
 
+    /**
+     * Set value in table
+     * @param value
+     * @param rowIndex
+     * @param columnIndex
+     */
     @Override
     public void setValueAt(Object value, int rowIndex, int columnIndex) {
         switch (columnIndex) {
@@ -97,6 +114,9 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         }
     }
 
+    /**
+     * Remove rows that are marked as deleted in the table
+     */
     public void removeRows() {
         for (int i = 0; i < this.dataVector.size(); ++i) {
             if ((Boolean)(this.dataVector.get(i)).get(3)) {
@@ -118,6 +138,11 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         return this.rowToHighlight;
     }
 
+    /**
+     * Save file to file
+     * @param saveFile destination file
+     * @throws IOException
+     */
     public void save(File saveFile) throws IOException {
         ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(saveFile.getPath()));
 
@@ -128,6 +153,12 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         objectOut.close();
     }
 
+    /**
+     * Load table from file
+     * @param loadFile source file
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void load(File loadFile) throws IOException, ClassNotFoundException {
         FileInputStream fin = new FileInputStream(loadFile.getPath());
         ObjectInputStream inputStream = new ObjectInputStream(fin);
@@ -147,6 +178,9 @@ public class TransactionTableModel extends DefaultTableModel implements Runnable
         this.fireTableDataChanged();
     }
 
+    /**
+     * start thread
+     */
     @Override
     public void run() {
         File f = new File("save.tmp");

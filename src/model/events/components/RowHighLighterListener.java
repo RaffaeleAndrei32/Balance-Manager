@@ -7,6 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+/**
+ * @author Raffaele Andrei
+ * Manages the next row highlighting
+ */
 public class RowHighLighterListener implements ActionListener {
     private TablePanel tablePanel;
     private int lastHighlightedRow;

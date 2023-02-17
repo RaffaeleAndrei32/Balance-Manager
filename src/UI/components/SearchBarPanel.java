@@ -5,6 +5,10 @@ import model.components.HasAttributes;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for search bar
+ */
 public class SearchBarPanel extends JPanel implements HasAttributes {
     private JTextField searchBar;
     private JButton searchButton;

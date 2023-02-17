@@ -2,6 +2,10 @@ package UI.components;
 
 import javax.swing.*;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for the Menu
+ */
 public class MenuBarPanel extends JPanel {
     private JMenuBar menuBar;
     private JMenu menu;

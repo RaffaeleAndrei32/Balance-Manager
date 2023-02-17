@@ -10,6 +10,10 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.util.Vector;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for JTable and SearchBarPanel
+ */
 public class TablePanel extends JPanel implements HasAttributes {
     private Vector<Vector<Transaction>> tableData;
     private TransactionTableModel transactionTableModel;
@@ -86,6 +90,10 @@ public class TablePanel extends JPanel implements HasAttributes {
         return tableSorter;
     }
 
+    /**
+     *
+     * @return total of transactions in table view
+     */
     public double totalOfTransactions () {
         double total = 0;
 

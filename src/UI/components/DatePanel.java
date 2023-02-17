@@ -8,6 +8,10 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Date;
 
+/**
+ * @author Raffaele Andrei
+ * Panel for the JDateChooser
+ */
 public class DatePanel extends JPanel implements HasAttributes {
     private JDateChooser dateChooser;
 
