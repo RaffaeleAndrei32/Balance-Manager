@@ -56,7 +56,7 @@ public class AddTransactionListener implements ActionListener {
             if (addTransactionPanel.getAmountField().getText().equals("") || Double.parseDouble(addTransactionPanel.getAmountField().getText()) < 0.0)
                 throw new MyException("Enter a valid amount!");
             transactionAmount = Double.parseDouble(addTransactionPanel.getAmountField().getText());
-        } catch(MyException | NumberFormatException e) {
+        } catch(Exception e) {
             errorMessage += e.getMessage() + "\n";
             errorCount++;
         }
