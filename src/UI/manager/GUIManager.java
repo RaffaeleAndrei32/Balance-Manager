@@ -26,7 +26,7 @@ public class GUIManager extends JFrame implements HasAttributes {
     public void setAttributes() {
         this.setLayout(new BorderLayout());
         this.setSize(1400, 750);
-        this.setResizable(false);
+        //this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
