@@ -6,6 +6,10 @@ import model.components.JTextFieldLimit;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 
 /**
  * @author Raffaele Andrei
@@ -15,14 +19,19 @@ public class AddTransactionPanel extends JPanel implements HasAttributes {
     private DatePanel dateChooser;
     private TransactionTypePanel transactionType;
     private JTextField descriptionField;
-    private JTextField amountField;
+    private JFormattedTextField amountField;
     private AddDeletePanel addDeletePanel;
 
     public AddTransactionPanel() {
         dateChooser = new DatePanel();
         transactionType = new TransactionTypePanel();
         this.descriptionField = new JTextField("");
-        this.amountField = new JTextField("");
+
+        NumberFormat format = new DecimalFormat("#.#", DecimalFormatSymbols.getInstance());
+        format.setMinimumFractionDigits(2);
+        format.setMaximumFractionDigits(2);
+        format.setRoundingMode(RoundingMode.HALF_UP);
+        this.amountField = new JFormattedTextField(format);
 
         addDeletePanel = new AddDeletePanel();
 
@@ -62,7 +71,7 @@ public class AddTransactionPanel extends JPanel implements HasAttributes {
         return descriptionField;
     }
 
-    public JTextField getAmountField() {
+    public JFormattedTextField getAmountField() {
         return amountField;
     }
 
