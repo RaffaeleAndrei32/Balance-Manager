@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="JDateChooser" level="project" />
-    <orderEntry type="library" name="jOpenDocument-1.5" level="project" />
+    <orderEntry type="library" exported="" name="JDateChooser" level="project" />
+    <orderEntry type="library" exported="" name="jOpenDocument-1.5" level="project" />
   </component>
 </module>

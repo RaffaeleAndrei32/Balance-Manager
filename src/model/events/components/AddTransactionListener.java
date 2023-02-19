@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * @author Raffaele Andrei
@@ -53,8 +52,6 @@ public class AddTransactionListener implements ActionListener {
         Boolean error = true;
         int errorCount = 0;
         double transactionAmount = 0;
-        System.out.println(addTransactionPanel.getAmountField().getValue());
-        System.out.println(Locale.getDefault());
         try {
             if (addTransactionPanel.getAmountField().getText().equals("") || Double.parseDouble(addTransactionPanel.getAmountField().getText()) < 0.0)
                 throw new MyException("Enter a valid amount!");
