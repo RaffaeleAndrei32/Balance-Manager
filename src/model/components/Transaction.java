@@ -2,7 +2,9 @@ package model.components;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.util.Locale;
 
 /**
  * @author Raffaele Andrei
@@ -15,8 +17,7 @@ public class Transaction implements Serializable {
     private String description;
     private double amount;
     private boolean positive;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
-
+    private static final DecimalFormat df = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US));
     public Transaction () {
         this.ID = ID_BASE++;
         this.date = LocalDate.now();
