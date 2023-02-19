@@ -10,6 +10,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * @author Raffaele Andrei
@@ -27,7 +28,7 @@ public class AddTransactionPanel extends JPanel implements HasAttributes {
         transactionType = new TransactionTypePanel();
         this.descriptionField = new JTextField("");
 
-        NumberFormat format = new DecimalFormat("#.#", DecimalFormatSymbols.getInstance());
+        NumberFormat format = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US));
         format.setMinimumFractionDigits(2);
         format.setMaximumFractionDigits(2);
         format.setRoundingMode(RoundingMode.HALF_UP);
