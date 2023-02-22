@@ -5,5 +5,5 @@ To download the repository:
 git clone https://github.com/RaffaeleAndrei32/Balance-Manager.git
 or dowload the zip folder.
 
-Then run the JAR file in BalanceManager/out:
-java -jar pathTo/BalanceManager/out/BalanceManager.jar/BalanceManager.jar
+Then run the JAR file in BalanceManager/out/BalanceManager_jar/BalanceManager.jar:
+java -jar pathTo/BalanceManager/out/BalanceManager_jar/BalanceManager.jar
