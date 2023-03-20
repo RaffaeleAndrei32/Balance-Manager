@@ -1,9 +1,8 @@
 # Balance-Manager
 Simple wealth tracking tool made to learn java OOP and JSwing.
 
-To download the repository:
-git clone https://github.com/RaffaeleAndrei32/Balance-Manager.git
-or download the zip folder.
+## HOW TO BUILD
+Firstly download the repository: ```git clone https://github.com/RaffaeleAndrei32/Balance-Manager.git``` or download the compressed folder.
 
-Then run the JAR file in BalanceManager/out/BalanceManager_jar/BalanceManager.jar:
-java -jar pathTo/BalanceManager/out/BalanceManager_jar/BalanceManager.jar
+Then ```java -jar BalanceManager/out/BalanceManager_jar/BalanceManager.jar```
+
